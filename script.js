@@ -1,35 +1,45 @@
 'use strict';
 
-const btn = document.querySelector('.btn-country');
-const countriesContainer = document.querySelector('.countries');
+const request = fetch('https://restcountries.com/v3.1/name/cameroon');
+
+console.log(request);
+
+// const btn = document.querySelector('.btn-country');
+// const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
+// https://restcountries.com/v3.1/alpha/
 
-const request = new XMLHttpRequest();
+// const getCountryData = function country(country) {
+//   const request = new XMLHttpRequest();
 
-request.open('GET', 'https://restcountries.com/v3.1/name/portugal');
-request.send();
-console.log(request.responseText);
+//   request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
+//   request.send();
+//   console.log(request.responseText);
 
-request.addEventListener('load', function () {
-  const [data] = JSON.parse(this.responseText);
-  console.log(data);
+//   request.addEventListener('load', function () {
+//     const [data] = JSON.parse(this.responseText);
+//     console.log(data);
 
-  const html = `
-  <article class="country">
-    <img class="country__img" src="${data.flags.png}" />
-    <div class="country__data">
-      <h3 class="country__name">${data.name}</h3>
-      <h4 class="country__region">${data.region}</h4>
-      <p class="country__row"><span>👫</span>${(
-        +data.population / 1000000
-      ).toFixed(1)}</p>
-      <p class="country__row"><span>🗣️</span>${data.languages.por}</p>
-      <p class="country__row"><span>💰</span>${data.currencies.EUR.name}</p>
-    </div>
-  </article>
-  `;
+//     const html = `
+//       <article class="country">
+//         <img class="country__img" src="${data.flags.png}" />
+//         <div class="country__data">
+//           <h3 class="country__name">${data.name}</h3>
+//           <h4 class="country__region">${data.region}</h4>
+//           <p class="country__row"><span>👫</span>${(
+//             +data.population / 1000000
+//           ).toFixed(1)}</p>
+//           <p class="country__row"><span>🗣️</span>${data.languages.eng}</p>
+//           <p class="country__row"><span>💰</span>${data.currencies.XAF.name}</p>
+//         </div>
+//       </article>
+//       `;
 
-  countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
-});
+//     countriesContainer.insertAdjacentHTML('beforeend', html);
+//     countriesContainer.style.opacity = 1;
+//   });
+// };
+
+// getCountryData('Cameroon');
+// getCountryData('USA');
